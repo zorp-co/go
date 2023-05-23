@@ -105,3 +105,26 @@ func (z *Zorp) Message(message *Message) {
 		}
 	}
 }
+
+func (z *Zorp) MessageGroup(message *MessageGroup) {
+	if len(message.To) == 0 {
+		message.To = append(message.To, "jack")
+	}
+
+	body := map[string]interface{}{
+		"body":    message.Body,
+		"to":      message.To,
+		"from":    message.From,
+		"tags":    message.Tags,
+		"data":    message.Data,
+		"actions": message.Actions,
+	}
+
+	if true {
+		_, err := z.Client.R().SetBody(body).Post("push")
+
+		if err != nil {
+			fmt.Println("Failed to push", err.Error())
+		}
+	}
+}
