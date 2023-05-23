@@ -52,6 +52,15 @@ type Message struct {
 	Actions []Action    `json:"actions"`
 }
 
+type MessageGroup struct {
+	From    string      `json:"from"`
+	Body    string      `json:"body"`
+	To      []string    `json:"to"`
+	Tags    []string    `json:"tags"`
+	Data    interface{} `json:"data"`
+	Actions []Action    `json:"actions"`
+}
+
 type Configuration struct {
 	Active   bool   `json:"active"`
 	Name     string `json:"name"`
